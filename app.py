@@ -37,7 +37,9 @@ def upload():
             token = str(uuid.uuid4()).replace('-', '')[:10]
             filename = f"{token}.pdf"
             file.save(os.path.join(UPLOAD_FOLDER, filename))
-            link = f"http://127.0.0.1:5000/sevasindhuservices.karnataka.gov.in/{token}"
+
+            # ✅ Dynamic link for Render
+            link = request.host_url + "sevasindhuservices.karnataka.gov.in/" + token
 
     return render_template_string(HTML_PAGE, link=link)
 
